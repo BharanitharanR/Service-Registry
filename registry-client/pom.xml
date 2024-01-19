@@ -24,7 +24,7 @@
 		<swagger-ui.version>4.15.5</swagger-ui.version>
 		<protobuf.version>3.16.0</protobuf.version>
 		<protobuf-plugin.version>0.6.1</protobuf-plugin.version>
-		<grpc.version>1.35.0</grpc.version>
+		<grpc.version>1.53.0</grpc.version>
 		<doNotPushToDHub>true</doNotPushToDHub>
 	</properties>
 	<dependencies>
