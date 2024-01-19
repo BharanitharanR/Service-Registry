@@ -1,0 +1,22 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package com.batty.registry;
+
+
+
+message registerServiceRequest {
+    string serviceName = 1;
+    string ip = 2;
+    bool status = 3;
+}
+
+message registerServiceResponse {
+    string serviceName = 1;
+    string ip = 2;
+    bool status = 3;
+}
+
+
+service RestService {
+    rpc registerService(registerServiceRequest) returns (registerServiceResponse);
+}
