@@ -21,6 +21,7 @@ import org.springframework.stereotype.Component;
 import com.batty.framework.datastore.DatabaseHandler;
 import com.batty.framework.datastore.DatastoreUtil;
 
+
 import java.util.Date;
 
 import static com.mongodb.client.model.Filters.*;
@@ -76,6 +77,20 @@ public class DatastoreImpl implements DatastoreInterface {
                     log.info("error in findServiceById"+e);
                     return null;
                     // throw new RuntimeException(e);
+        }
+    }
+
+    public boolean updateHeartbeat(ServiceSchema serviceSchemaModel){
+        try
+        {
+            Document query = new Document().append("serviceId",  serviceSchemaModel.getServiceId());
+            Document updates =  new Document();
+            updates.put("lastModifiedTimeStamp",new Date());
+            return this.datastore.updateOne(query,updates);
+        }
+        catch(Exception ignore)
+        {
+            return false;
         }
     }
 

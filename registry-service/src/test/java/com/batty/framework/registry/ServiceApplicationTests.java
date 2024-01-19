@@ -68,9 +68,35 @@ class ServiceApplicationTests {
 
 	@Test
 	@Order(4)
+	public void testHeartBeat() {
+		if(service != null)
+		{
+			ServiceSchema schema = new ServiceSchema();
+			schema.setServiceId("TestHeartBeat");
+			schema.setServiceName("TestService");
+			schema.setStatus("true");
+			schema.setServiceHostIP("testHostIP");
+			ResponseEntity<ServiceSchema> resp = service.addService("TestHeartBeat",schema);
+			Assertions.assertEquals("true" , resp.getBody().getStatus());
+			ResponseEntity<ServiceSchema> isServiceBeforeHeartBeat = service.getService("TestHeartBeat");
+
+			ResponseEntity<ServiceSchema> responseHeartBeat = service.registerHeartbeat("TestHeartBeat",schema);
+			Assertions.assertEquals("true" , responseHeartBeat.getBody().getStatus());
+			ResponseEntity<ServiceSchema> isServiceAfterHeartBeat = service.getService("TestHeartBeat");
+
+			// Assertions.assertNotEquals(isServiceBeforeHeartBeat.getBody().getLastModifiedTimeStamp(),isServiceAfterHeartBeat.getBody().getLastModifiedTimeStamp());
+		}
+	}
+
+
+	@Test
+	@Order(5)
 	public void testDeleteService() {
 		if (service != null) {
 			ResponseEntity<DeleteServiceSchema> response = service.removeService("TestService") ;
+			Assertions.assertEquals("deleted", response.getBody().getDeleteStatus());
+
+			response = service.removeService("TestHeartBeat") ;
 			Assertions.assertEquals("deleted", response.getBody().getDeleteStatus());
 		}
 	}

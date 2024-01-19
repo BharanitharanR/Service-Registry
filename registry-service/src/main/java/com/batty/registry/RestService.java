@@ -56,7 +56,7 @@ public class RestService extends RestServiceImplBase implements RegistryApi  {
 
     @Override
     public ResponseEntity<ServiceSchema> registerHeartbeat(String serviceId, ServiceSchema serviceSchema) {
-        if( datastore.addService(serviceSchema) )
+        if( datastore.updateHeartbeat(serviceSchema) )
         {
             return ResponseEntity.ok(datastore.findServiceById(serviceSchema.getServiceId()));
         }
