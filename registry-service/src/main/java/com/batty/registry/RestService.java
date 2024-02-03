@@ -7,6 +7,7 @@ import com.batty.registry.model.ServiceSchema;
 import io.grpc.stub.StreamObserver;
 import net.devh.boot.grpc.server.service.GrpcService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +16,7 @@ import com.batty.registry.RestServiceGrpc.*;
 
 
 @Component("RegistryController")
+@Profile({"dev","default"})
 @RestController
 @GrpcService
 public class RestService extends RestServiceImplBase implements RegistryApi  {

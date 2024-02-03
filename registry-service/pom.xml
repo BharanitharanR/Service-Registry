@@ -83,14 +83,19 @@
 		</dependency>-->
 		<dependency>
 			<groupId>com.batty</groupId>
-			<artifactId>registry-client</artifactId>
+			<artifactId>framework-message</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>com.batty</groupId>
-			<artifactId>framework-registry</artifactId>
+			<artifactId>registry-client</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+<!--		<dependency>
+			<groupId>com.batty</groupId>
+			<artifactId>framework-registry</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>-->
 		<dependency>
 			<groupId>com.batty</groupId>
 			<artifactId>framework-datastore</artifactId>
@@ -138,7 +143,11 @@
 			<artifactId>jackson-databind-nullable</artifactId>
 			<version>0.2.6</version>
 		</dependency>
-
+		<!-- Spring actuator -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
